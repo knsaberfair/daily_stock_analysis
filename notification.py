@@ -202,7 +202,7 @@ class NotificationService:
         self, 
         results: List[AnalysisResult],
         report_date: Optional[str] = None
-    ) -> str:
+    ):
         """
         生成 Markdown 格式的日报（详细版）
         
@@ -389,7 +389,7 @@ class NotificationService:
             f"*报告生成时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*",
         ])
         
-        return "\n".join(report_lines)
+        return "\n".join(report_lines),report_lines
     
     def _get_signal_level(self, result: AnalysisResult) -> tuple:
         """
