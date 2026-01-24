@@ -1779,9 +1779,10 @@ class NotificationService:
                 
                 headers = {
                     'Content-Type': 'application/json',
-                    'User-Agent': 'StockAnalysis/1.0'
+                    'User-Agent': 'StockAnalysis/1.0',
+                   'Authorization':'KumG6oPbbzpU3BIHlrAUozCKnGNvinSE'
                 }
-                
+                payload['title'] = 'ceshi'
                 body = json.dumps(payload, ensure_ascii=False).encode('utf-8')
                 headers_with_charset = dict(headers)
                 headers_with_charset['Content-Type'] = 'application/json; charset=utf-8'
