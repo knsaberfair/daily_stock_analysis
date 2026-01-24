@@ -389,7 +389,7 @@ class NotificationService:
             f"*报告生成时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*",
         ])
         
-        return "\n".join(report_lines),report_lines
+        return "\n".join(report_lines)
     
     def _get_signal_level(self, result: AnalysisResult) -> tuple:
         """
