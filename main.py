@@ -570,7 +570,7 @@ class StockAnalysisPipeline:
             logger.info("生成决策仪表盘日报...")
             
             # 生成决策仪表盘格式的详细日报
-            report, res = self.notifier.generate_dashboard_report(results)
+            report = self.notifier.generate_dashboard_report(results)
             
             # 保存到本地
             filepath = self.notifier.save_report_to_file(report)
@@ -600,7 +600,7 @@ class StockAnalysisPipeline:
                     elif channel == NotificationChannel.EMAIL:
                         non_wechat_success = self.notifier.send_to_email(report) or non_wechat_success
                     elif channel == NotificationChannel.CUSTOM:
-                        non_wechat_success = self.notifier.send_to_custom(report, res) or non_wechat_success
+                        non_wechat_success = self.notifier.send_to_custom(report) or non_wechat_success
                     else:
                         logger.warning(f"未知通知渠道: {channel}")
 
