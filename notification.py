@@ -1741,7 +1741,7 @@ class NotificationService:
         
         return result
     
-    def send_to_custom(self, content: str, key) -> bool:
+    def send_to_custom(self, content: str, key='single') -> bool:
         """
         推送消息到自定义 Webhook
         
