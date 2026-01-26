@@ -723,7 +723,7 @@ def run_market_review(notifier: NotificationService, analyzer=None, search_servi
                 # 添加标题
                 report_content = f"🎯 大盘复盘\n\n{review_report}"
                 
-                success = notifier.send(report_content)
+                success = notifier.send(report_content, key="dapan")
                 if success:
                     logger.info("大盘复盘推送成功")
                 else:
