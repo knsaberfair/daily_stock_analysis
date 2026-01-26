@@ -1741,7 +1741,7 @@ class NotificationService:
         
         return result
     
-    def send_to_custom(self, content: str) -> bool:
+    def send_to_custom(self, content: str, key) -> bool:
         """
         推送消息到自定义 Webhook
         
@@ -1783,6 +1783,7 @@ class NotificationService:
                    'Authorization':'KumG6oPbbzpU3BIHlrAUozCKnGNvinSE'
                 }
                 payload['title'] = 'ceshi'
+                payload['key'] = key
                 body = json.dumps(payload, ensure_ascii=False).encode('utf-8')
                 headers_with_charset = dict(headers)
                 headers_with_charset['Content-Type'] = 'application/json; charset=utf-8'
@@ -1855,7 +1856,7 @@ class NotificationService:
             "body": content
         }
     
-    def send(self, content: str) -> bool:
+    def send(self, content: str, key='single') -> bool:
         """
         统一发送接口 - 向所有已配置的渠道发送
         
@@ -1889,7 +1890,7 @@ class NotificationService:
                 elif channel == NotificationChannel.EMAIL:
                     result = self.send_to_email(content)
                 elif channel == NotificationChannel.CUSTOM:
-                    result = self.send_to_custom(content)
+                    result = self.send_to_custom(content, key)
                 else:
                     logger.warning(f"不支持的通知渠道: {channel}")
                     result = False
